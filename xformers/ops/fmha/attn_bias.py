@@ -1567,6 +1567,8 @@ class AttentionBiasSubTensor(torch.Tensor, AttentionBias):
         if func._overloadpacket in [
             torch.ops.aten.clone,
             torch.ops.aten.detach,
+            torch.ops.aten.to.dtype,
+            torch.ops.aten.to.device,
             torch.ops.aten._to_copy,
         ]:
             return cls(_subtensor=func(args[0]._subtensor, **kwargs))
